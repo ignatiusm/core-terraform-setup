@@ -1,0 +1,38 @@
+name: "Terraform Plan"
+
+on:
+  workflow_dispatch:
+	push:
+		branches:
+			- main
+
+jobs:
+  tf_check:
+    name: Terraform Validation
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.5.0
+
+
+    - name: Configure AWS Credentials Action For GitHub Actions
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+    - name: Setup Terraform CLI
+      uses: hashicorp/setup-terraform@v2.0.2
+
+    - name: Terraform init, validate, and plan
+      run: |
+        echo `pwd`
+        echo "** Running Terraform Init**"
+        terraform init
+
+        echo "** Running Terraform Validate**"
+        terraform validate
+
+        echo "** Running Terraform Plan**"
+        terraform plan
+
