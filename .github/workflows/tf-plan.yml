@@ -23,7 +23,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform init
-        run: terraform init -backend-config=backend.hcl
+        run: terraform init
 
       - name: Terraform validate
         run: terraform validate
