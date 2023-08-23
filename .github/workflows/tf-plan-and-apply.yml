@@ -6,8 +6,8 @@ on:
     - main
 
 jobs:
-  tf_check:
-    name: Terraform Validation
+  tf_validate:
+    name: Terraform Validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -34,6 +34,7 @@ jobs:
   tf_apply:
     name: Terraform Apply
     runs-on: ubuntu-latest
+    needs: tf_validate
     steps:
       - uses: actions/checkout@v3
 
