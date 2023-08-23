@@ -51,7 +51,8 @@ resource "aws_dynamodb_table" "terraform_locks" {
 # will be passed in from a file via -backend-config arguments to 
 # 'terraform init'
 
-# MAKE SURE YOU CHANGE THE KEY IF YOU COPY THIS BLOCK!!!
+### COMMENT OUT BELOW THIS POINT THE FIRST TIME YOU CREATE BUCKET ###
+# Make sure you change the key if you copy this block!!!
 terraform {
   backend "s3" {
     key            = "global/s3/terraform.tfstate"
