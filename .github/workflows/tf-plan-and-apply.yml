@@ -31,7 +31,7 @@ jobs:
       - name: Terraform plan
         run: terraform plan
 
-tf_apply:
+  tf_apply:
     name: Terraform Apply
     runs-on: ubuntu-latest
     steps:
